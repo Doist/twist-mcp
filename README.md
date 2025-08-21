@@ -10,28 +10,25 @@ Before you begin, ensure you have the following installed:
 
 ## Setup
 
-Follow these steps to set up and run the project locally.
-
-### 1. Clone the Repository
+Clone the repository and run the setup script:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Doist/twist-mcp.git
 cd twist-mcp
+npm run setup
 ```
 
-### 2. Install Dependencies
+This will install all required packages and create a `.env` file from the template if it doesn't already exist.
 
-Install the required npm packages:
+## Configure Environment Variables
 
-```bash
-npm install
-```
+This server requires the following environment variables from a Twist application to authenticate via OAuth 2.0:
 
-### 3. Configure Environment Variables
+- `TWIST_CLIENT_ID` - Your application's Client ID
+- `TWIST_CLIENT_SECRET` - Your application's Client Secret  
+- `TWIST_REDIRECT_URI` - The redirect URI for OAuth callbacks
 
-This server requires credentials from a Twist application to authenticate via OAuth 2.0.
-
-#### a. Create a Twist App
+### Create a Twist App
 
 -   Go to the [Twist App Directory](https://twist.com/apps/build).
 -   Click "Create a new app".
@@ -39,29 +36,9 @@ This server requires credentials from a Twist application to authenticate via OA
 -   In the "OAuth" section, you will find your **Client ID** and **Client Secret**.
 -   You must also specify a **Redirect URI**. For local development, use `http://localhost:3000/callback`.
 
-#### b. Create a `.env` file
+### Configure your credentials
 
-Create a file named `.env` in the root of the project directory. This file will store your application's credentials.
-
-```
-touch .env
-```
-
-Copy and paste the following into the `.env` file, replacing the placeholder values with the credentials you obtained from the Twist App Directory.
-
-```env
-# .env.example
-
-# Your application's Client ID from the Twist App Directory
-TWIST_CLIENT_ID=your_client_id_here
-
-# Your application's Client Secret from the Twist App Directory
-TWIST_CLIENT_SECRET=your_client_secret_here
-
-# The Redirect URI you configured in your Twist app settings
-# Must match exactly what is in the app configuration.
-TWIST_REDIRECT_URI=http://localhost:3000/callback
-```
+Edit the `.env` file (created during setup) and replace the placeholder values with the credentials you obtained from the Twist App Directory.
 
 **Important:** Never commit your `.env` file to version control.
 
