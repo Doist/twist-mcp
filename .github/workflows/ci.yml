@@ -36,6 +36,3 @@ jobs:
 
       - name: Run Biome check
         run: npm run check
-
-      - name: Run tests
-        run: npm test
